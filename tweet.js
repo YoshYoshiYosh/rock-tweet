@@ -25,7 +25,6 @@ let interval = 60000
 const sleep = (timer) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            console.log(`${timer/1000}秒間隔で投稿します。`)
             resolve()
         }, timer)
     })
@@ -34,8 +33,6 @@ const sleep = (timer) => {
 (async function main() {
     
     while(true){
-        //numの値でスイッチする。0だったらエリッククラプトンみたいな感じで
-    
         num = Math.floor( Math.random() * 4 );
         console.log(num)
         now = new Date()
