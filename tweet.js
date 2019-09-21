@@ -1,6 +1,6 @@
 const Twitter = require('twitter')
-var fs = require('fs')
-var now;
+let fs = require('fs')
+let now;
 
 // すでに削除されたkeyのため、直接記述
 let twitter = new Twitter({
