@@ -2,6 +2,7 @@ const Twitter = require('twitter')
 var fs = require('fs')
 var now;
 
+// すでに削除されたkeyのため、直接記述
 let twitter = new Twitter({
     consumer_key: 'LBwxBrvUw28Kb5yMFFJgzXaTr',
     consumer_secret: 'KVWCgi5cwnTz61n9m5Vr2Xhn9QMbFYnbV7ULz0RwgztsHTwY4W',
