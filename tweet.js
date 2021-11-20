@@ -1,6 +1,6 @@
 const Twitter = require('twitter')
 let fs = require('fs')
-require('dotenv').config();
+require('dotenv').config()
 
 let twitter = new Twitter({
     consumer_key:    process.env.API_KEY,
@@ -17,10 +17,21 @@ let artists = [
     'Steve Vai'
 ]
 
-function getImage(artistName) {
-    let splittedName = artistName.toLowerCase().split(' ')
-    let filePath = splittedName[0] + '_' + splittedName[1] + '.jpg'
-    return fs.readFileSync(`./images//${filePath}`)
+async function getImage(artistName) {
+    const folderName = artistName.toLowerCase().replace(' ', '_')
+    const files = await fs.promises.readdir(`./images/${folderName}`, (err, files) => {
+        if (err) reject(err)
+        return files
+    })
+    const imageFileIndex = Math.floor( Math.random() * files.length )
+    console.log('---')
+    console.log('folderName')
+    console.log(folderName)
+    console.log('file')
+    console.log(files[imageFileIndex])
+    console.log('---')
+
+    return fs.readFileSync(`./images/${folderName}/${files[imageFileIndex]}`)
 }
 
 let interval = 60000
@@ -35,12 +46,12 @@ const sleep = (timer) => {
 
 (async function main() {
     while(true) {
-        const index = Math.floor( Math.random() * 4 );
+        const index = Math.floor( Math.random() * 4 )
         const now = new Date()
 
         const selectedArtistName = artists[index]
 
-        const imageData = getImage(selectedArtistName)
+        const imageData = await getImage(selectedArtistName)
 
         const media_id = (await twitter.post('media/upload', { media: imageData })).media_id_string
 
