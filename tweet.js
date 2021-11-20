@@ -24,12 +24,6 @@ async function getImage(artistName) {
         return files
     })
     const imageFileIndex = Math.floor( Math.random() * files.length )
-    console.log('---')
-    console.log('folderName')
-    console.log(folderName)
-    console.log('file')
-    console.log(files[imageFileIndex])
-    console.log('---')
 
     return fs.readFileSync(`./images/${folderName}/${files[imageFileIndex]}`)
 }
