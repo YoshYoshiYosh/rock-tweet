@@ -23,7 +23,7 @@ async function getImage(artistName) {
         if (err) reject(err)
         return files
     })
-    const imageFileIndex = Math.floor( Math.random() * files.length-1 )
+    const imageFileIndex = Math.floor( Math.random() * files.length )
     console.log('---')
     console.log('folderName')
     console.log(folderName)
@@ -46,7 +46,7 @@ const sleep = (timer) => {
 
 (async function main() {
     while(true) {
-        const index = Math.floor( Math.random() * artists.length-1 )
+        const index = Math.floor( Math.random() * artists.length )
         const now = new Date()
 
         const selectedArtistName = artists[index]
